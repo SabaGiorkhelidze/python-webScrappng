@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Titanic Search</h1>
+<form method="POST" action="/">
+  <label for="age">Search by Age:</label>
+  <input type="number" name="age" id="age" />
+  <br />
+  <label for="gender">Search by Gender:</label>
+  <select name="gender" id="gender">
+    <option value="">-- Select --</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <br />
+  <input type="submit" value="Search" />
+</form>
+
+{% if passengers %}
+<h2>Search Results:</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Survived</th>
+    <th>Embarkation Port</th>
+  </tr>
+  {% for passenger in passengers %}
+  <tr>
+    <td>{{ passenger.Name }}</td>
+    <td>{{ passenger.Age }}</td>
+    <td>{{ passenger.Sex }}</td>
+    <td>{{ passenger.Survived }}</td>
+    <td>{{ passenger.Embarked }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
